@@ -1,0 +1,24 @@
+version: '2'
+services:
+  cassandra:
+    image: cassandra:latest
+    ports:
+      - "7199:7199"
+      - "9042:9042"
+      - "9160:9160"
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=password
+    container_name: cassandra
+
+  rabbitmq:
+    image: rabbitmq:management-alpine
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=password
+    container_name: rabbitmq
+
+
